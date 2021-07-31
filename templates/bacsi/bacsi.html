@@ -1,0 +1,58 @@
+{% extends 'templates/index.html' %}
+    {% block content %}
+ 			<div class="content">
+                <div class="row">
+                    <div class="col-sm-4 col-3">
+                        <p></p><h4 class="page-title">Bác sĩ</h4>
+                    </div>
+                    <div class="col-sm-8 col-9 text-right m-b-20">
+						<form  method="get">
+							{{myfilter.form}}
+                      <p><button type="submit" class="btn btn-primary">Search</button></p></form>
+                    </div>
+                </div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="table-responsive">
+							<table class="table table-border table-striped custom-table datatable mb-0">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>Tên</th>
+										<th>Ngày sinh</th>
+										<th>Điện thoại</th>
+										<th>Email</th>
+										<th>Địa chỉ</th>
+										<th>Đơn vị y tế</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for i in bs %}
+										<tr>
+											<td>{{i.user.id}}</td>
+											<td>{{i.ten}}</td>
+											<td>{{i.ngaysinh}}</td>
+											<td>{{i.user.phone}}</td>
+											<td>{{i.user.email}}</td>
+											<td>{{i.address}}</td>
+											<td>{{i.donviyte}}</td>
+											<td class="text-right">
+												<div class="dropdown dropdown-action">
+													<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+													<div class="dropdown-menu dropdown-menu-right">
+														<a class="dropdown-item" href=""><i class="fa fa-pencil m-r-5"></i> Edit</a>
+														<a class="dropdown-item" href=""><i class="fa fa-pencil m-r-5"></i> Delete</a>
+														<a class="dropdown-item" href=""><i class="fa fa-pencil m-r-5"></i> Chuyển Giao</a>
+													</div>
+												</div>
+											</td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+                </div>
+            </div>
+    {% endblock %}
